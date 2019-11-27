@@ -13,12 +13,18 @@ import java.awt.Toolkit;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 
 public class FramePrincipal extends JFrame {
 
@@ -29,6 +35,7 @@ public class FramePrincipal extends JFrame {
 	
 	private Toolkit herramientas = Toolkit.getDefaultToolkit();
 	private Dimension pantallaSize = herramientas.getScreenSize();
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -109,6 +116,42 @@ public class FramePrincipal extends JFrame {
 		
 		JPanel pnlDerF2C1 = new JPanel();
 		pnlDer.add(pnlDerF2C1);
+		
+		table = new JTable();
+		table.setShowHorizontalLines(false);
+		table.setShowVerticalLines(false);
+		table.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		table.setBackground(Color.WHITE);
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+			},
+			new String[] {
+				"Estado del proceso", "Nombre del proceso", "PID del proceso"
+			}
+		));
+		table.getColumnModel().getColumn(1).setPreferredWidth(105);
+		table.getColumnModel().getColumn(2).setPreferredWidth(90);
+		pnlDerF2C1.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel = new JPanel();
+		panel.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		panel.setBackground(Color.DARK_GRAY);
+		panel.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+		pnlDerF2C1.add(panel, BorderLayout.NORTH);
+		
+		JLabel lblNewLabel = new JLabel("Gesti\u00F3n de procesos");
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		panel.add(lblNewLabel);
+		JScrollPane scrollPane = new JScrollPane(table);
+		scrollPane.setBorder(new LineBorder(Color.BLACK, 1, true));
+		pnlDerF2C1.add(scrollPane, BorderLayout.CENTER);
+		//pnlDerF2C1.add(table, BorderLayout.CENTER);
 	}
 
 }
