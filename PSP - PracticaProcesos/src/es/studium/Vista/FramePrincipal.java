@@ -3,7 +3,6 @@ package es.studium.Vista;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -38,22 +37,6 @@ public class FramePrincipal extends JFrame {
 	private Toolkit herramientas = Toolkit.getDefaultToolkit();
 	private Dimension pantallaSize = herramientas.getScreenSize();
 	private JTable table;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					FramePrincipal frame = new FramePrincipal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -96,19 +79,18 @@ public class FramePrincipal extends JFrame {
 		pnlIzqNorte.add(btnEjecutarComando, BorderLayout.EAST);
 		Border emptyTA = new EmptyBorder(3, 3, 0, 0);
 		CompoundBorder borderTA = new CompoundBorder(line, emptyTA);
-		
+
 		JTextArea textArea = new JTextArea();
 		JScrollPane scrollPane_1 = new JScrollPane(textArea);
 		pnlIzq.add(scrollPane_1, BorderLayout.CENTER);
-		
-				
-				textArea.setCaretColor(new Color(204, 204, 204));
-				textArea.setSelectionColor(SystemColor.windowBorder);
-				textArea.setSelectedTextColor(new Color(204, 204, 204));
-				textArea.setBorder(borderTA);
-				textArea.setBackground(new Color(12, 12, 12));
-				textArea.setForeground(new Color(204, 204, 204));
-				textArea.setFont(new Font("Consolas", Font.PLAIN, 16));
+
+		textArea.setCaretColor(new Color(204, 204, 204));
+		textArea.setSelectionColor(SystemColor.windowBorder);
+		textArea.setSelectedTextColor(new Color(204, 204, 204));
+		textArea.setBorder(borderTA);
+		textArea.setBackground(new Color(12, 12, 12));
+		textArea.setForeground(new Color(204, 204, 204));
+		textArea.setFont(new Font("Consolas", Font.PLAIN, 16));
 
 		JPanel pnlDer = new JPanel();
 		contentPane.add(pnlDer);
@@ -124,9 +106,9 @@ public class FramePrincipal extends JFrame {
 		Image imgPaint = paintIcon.getImage();
 		Image newimgPaint = imgPaint.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
 		paintIcon = new ImageIcon(newimgPaint);
-		btnPaint.setIcon(paintIcon);		
+		btnPaint.setIcon(paintIcon);
 		pnlDerF1C1.add(btnPaint);
-		
+
 		JButton btnBloc = new JButton();
 		ImageIcon blocIcon = new ImageIcon(FramePrincipal.class.getResource("/img/notePadIcon.png"));
 		Image imgBloc = blocIcon.getImage();
@@ -142,13 +124,13 @@ public class FramePrincipal extends JFrame {
 		gestionIcon = new ImageIcon(newimgGestion);
 		btnGestion.setIcon(gestionIcon);
 		pnlDerF1C1.add(btnGestion);
-	
+
 		JButton btnJuego = new JButton();
 		ImageIcon juegoIcon = new ImageIcon(FramePrincipal.class.getResource("/img/juegoIcon.png"));
 		Image imgJuego = juegoIcon.getImage();
 		Image newimgJuego = imgJuego.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
 		juegoIcon = new ImageIcon(newimgJuego);
-		btnJuego.setIcon(juegoIcon);		
+		btnJuego.setIcon(juegoIcon);
 		pnlDerF1C1.add(btnJuego);
 
 		JPanel pnlDerF2C1 = new JPanel();
