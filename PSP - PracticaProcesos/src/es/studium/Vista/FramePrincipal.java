@@ -94,18 +94,21 @@ public class FramePrincipal extends JFrame {
 
 		JButton btnEjecutarComando = new JButton("Ejecutar Comando");
 		pnlIzqNorte.add(btnEjecutarComando, BorderLayout.EAST);
-
-		JTextArea textArea = new JTextArea();
-		textArea.setCaretColor(new Color(204, 204, 204));
-		textArea.setSelectionColor(SystemColor.windowBorder);
-		textArea.setSelectedTextColor(new Color(204, 204, 204));
 		Border emptyTA = new EmptyBorder(3, 3, 0, 0);
 		CompoundBorder borderTA = new CompoundBorder(line, emptyTA);
-		textArea.setBorder(borderTA);
-		textArea.setBackground(new Color(12, 12, 12));
-		textArea.setForeground(new Color(204, 204, 204));
-		textArea.setFont(new Font("Consolas", Font.PLAIN, 16));
-		pnlIzq.add(textArea, BorderLayout.CENTER);
+		
+		JTextArea textArea = new JTextArea();
+		JScrollPane scrollPane_1 = new JScrollPane(textArea);
+		pnlIzq.add(scrollPane_1, BorderLayout.CENTER);
+		
+				
+				textArea.setCaretColor(new Color(204, 204, 204));
+				textArea.setSelectionColor(SystemColor.windowBorder);
+				textArea.setSelectedTextColor(new Color(204, 204, 204));
+				textArea.setBorder(borderTA);
+				textArea.setBackground(new Color(12, 12, 12));
+				textArea.setForeground(new Color(204, 204, 204));
+				textArea.setFont(new Font("Consolas", Font.PLAIN, 16));
 
 		JPanel pnlDer = new JPanel();
 		contentPane.add(pnlDer);
