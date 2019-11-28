@@ -113,6 +113,19 @@ public class FramePrincipal extends JFrame {
 		
 		JPanel pnlDerF1C1 = new JPanel();
 		pnlDer.add(pnlDerF1C1);
+		pnlDerF1C1.setLayout(new GridLayout(2, 2, 0, 0));
+		
+		JButton btnPaint = new JButton("New button");
+		pnlDerF1C1.add(btnPaint);
+		
+		JButton btnBloc = new JButton("New button");
+		pnlDerF1C1.add(btnBloc);
+		
+		JButton btnGestion = new JButton("New button");
+		pnlDerF1C1.add(btnGestion);
+		
+		JButton btnJuego = new JButton("New button");
+		pnlDerF1C1.add(btnJuego);
 		
 		JPanel pnlDerF2C1 = new JPanel();
 		pnlDer.add(pnlDerF2C1);
