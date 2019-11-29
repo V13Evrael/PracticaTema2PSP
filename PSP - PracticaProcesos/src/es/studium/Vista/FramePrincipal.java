@@ -38,6 +38,22 @@ public class FramePrincipal extends JFrame {
 	private Dimension pantallaSize = herramientas.getScreenSize();
 	private JTable table;
 
+	private JButton btnEjecutarComando;
+
+	private JTextArea textArea;
+
+	private JButton btnPaint;
+
+	private JButton btnBloc;
+
+	private JButton btnGestion;
+
+	private JButton btnJuego;
+
+	private JButton btnReload;
+
+	private JButton btnParaProceso;
+
 	/**
 	 * Create the frame.
 	 */
@@ -62,12 +78,12 @@ public class FramePrincipal extends JFrame {
 		textField = new JTextField();
 
 		textField.setCaretColor(new Color(204, 204, 204));
-		//
+		
 		Border line = BorderFactory.createLineBorder(new Color(204, 204, 204));
 		Border emptyTF = new EmptyBorder(0, 3, 0, 0);
 		CompoundBorder borderTF = new CompoundBorder(line, emptyTF);
 		textField.setBorder(borderTF);
-		//
+		
 		pnlIzqNorte.add(textField, BorderLayout.CENTER);
 		textField.setColumns(10);
 		textField.setBackground(new Color(12, 12, 12));
@@ -75,12 +91,12 @@ public class FramePrincipal extends JFrame {
 		textField.setFont(new Font("Consolas", Font.PLAIN, 14));
 		textField.setMargin(new Insets(10, 10, 10, 10));
 
-		JButton btnEjecutarComando = new JButton("Ejecutar Comando");
+		btnEjecutarComando = new JButton("Ejecutar Comando");
 		pnlIzqNorte.add(btnEjecutarComando, BorderLayout.EAST);
 		Border emptyTA = new EmptyBorder(3, 3, 0, 0);
 		CompoundBorder borderTA = new CompoundBorder(line, emptyTA);
 
-		JTextArea textArea = new JTextArea();
+		textArea = new JTextArea();
 		JScrollPane scrollPane_1 = new JScrollPane(textArea);
 		pnlIzq.add(scrollPane_1, BorderLayout.CENTER);
 
@@ -100,7 +116,7 @@ public class FramePrincipal extends JFrame {
 		pnlDer.add(pnlDerF1C1);
 		pnlDerF1C1.setLayout(new GridLayout(2, 2, 0, 0));
 
-		JButton btnPaint = new JButton();
+		btnPaint = new JButton();
 
 		ImageIcon paintIcon = new ImageIcon(FramePrincipal.class.getResource("/img/paintIcon.png"));
 		Image imgPaint = paintIcon.getImage();
@@ -109,7 +125,7 @@ public class FramePrincipal extends JFrame {
 		btnPaint.setIcon(paintIcon);
 		pnlDerF1C1.add(btnPaint);
 
-		JButton btnBloc = new JButton();
+		btnBloc = new JButton();
 		ImageIcon blocIcon = new ImageIcon(FramePrincipal.class.getResource("/img/notePadIcon.png"));
 		Image imgBloc = blocIcon.getImage();
 		Image newimgBloc = imgBloc.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
@@ -117,7 +133,7 @@ public class FramePrincipal extends JFrame {
 		btnBloc.setIcon(blocIcon);
 		pnlDerF1C1.add(btnBloc);
 
-		JButton btnGestion = new JButton();
+		btnGestion = new JButton();
 		ImageIcon gestionIcon = new ImageIcon(FramePrincipal.class.getResource("/img/gestionIcon.png"));
 		Image imgGestion = gestionIcon.getImage();
 		Image newimgGestion = imgGestion.getScaledInstance(110, 110, java.awt.Image.SCALE_SMOOTH);
@@ -125,7 +141,7 @@ public class FramePrincipal extends JFrame {
 		btnGestion.setIcon(gestionIcon);
 		pnlDerF1C1.add(btnGestion);
 
-		JButton btnJuego = new JButton();
+		btnJuego = new JButton();
 		ImageIcon juegoIcon = new ImageIcon(FramePrincipal.class.getResource("/img/juegoIcon.png"));
 		Image imgJuego = juegoIcon.getImage();
 		Image newimgJuego = imgJuego.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
@@ -143,11 +159,14 @@ public class FramePrincipal extends JFrame {
 		table.setBackground(Color.WHITE);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setModel(new DefaultTableModel(
-				new Object[][] { { null, null, null }, { null, null, null }, { null, null, null },
-						{ null, null, null }, },
-				new String[] { "Estado del proceso", "Nombre del proceso", "PID del proceso" }));
+			new Object[][] {
+			},
+			new String[] {
+				"Nombre del proceso", "PID del proceso"
+			}
+		));
+		table.getColumnModel().getColumn(0).setPreferredWidth(131);
 		table.getColumnModel().getColumn(1).setPreferredWidth(105);
-		table.getColumnModel().getColumn(2).setPreferredWidth(90);
 		pnlDerF2C1.setLayout(new BorderLayout(0, 0));
 
 		JPanel panel = new JPanel();
@@ -163,7 +182,73 @@ public class FramePrincipal extends JFrame {
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBorder(new LineBorder(Color.BLACK, 1, true));
 		pnlDerF2C1.add(scrollPane, BorderLayout.CENTER);
-		// pnlDerF2C1.add(table, BorderLayout.CENTER);
+		
+		JPanel pnlBotonesProcesos = new JPanel();
+		pnlDerF2C1.add(pnlBotonesProcesos, BorderLayout.SOUTH);
+		
+		btnReload = new JButton("Refrescar");
+		btnReload.setPreferredSize(new Dimension(100, 23));
+		btnReload.setMinimumSize(new Dimension(100, 23));
+		btnReload.setMaximumSize(new Dimension(100, 23));
+		pnlBotonesProcesos.add(btnReload);
+		
+		btnParaProceso = new JButton("Stop");
+		btnParaProceso.setPreferredSize(new Dimension(100, 23));
+		btnParaProceso.setMinimumSize(new Dimension(100, 23));
+		btnParaProceso.setMaximumSize(new Dimension(100, 23));
+		pnlBotonesProcesos.add(btnParaProceso);
+	}
+
+	public JButton getBtnReload() {
+		return btnReload;
+	}
+
+	public JButton getBtnParaProceso() {
+		return btnParaProceso;
+	}
+
+	public JTextField getTextField() {
+		return textField;
+	}
+
+	public void setTextField(JTextField textField) {
+		this.textField = textField;
+	}
+
+	public JTable getTable() {
+		return table;
+	}
+
+	public void setTable(JTable table) {
+		this.table = table;
+	}
+
+	public JTextArea getTextArea() {
+		return textArea;
+	}
+
+	public void setTextArea(JTextArea textArea) {
+		this.textArea = textArea;
+	}
+
+	public JButton getBtnEjecutarComando() {
+		return btnEjecutarComando;
+	}
+
+	public JButton getBtnPaint() {
+		return btnPaint;
+	}
+
+	public JButton getBtnBloc() {
+		return btnBloc;
+	}
+
+	public JButton getBtnGestion() {
+		return btnGestion;
+	}
+
+	public JButton getBtnJuego() {
+		return btnJuego;
 	}
 
 }
