@@ -12,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 public class LanzaComando {
 
 	ArrayList<String> lista = new ArrayList<String>();
+	String pathActual = "C:\\Users\\jmpla\\git\\PracticaTema2PSP\\PSP - PracticaProcesos";
 
 	public void leeProcesos(String comando) {
 
@@ -65,6 +66,7 @@ public class LanzaComando {
 		for (String cadena : lista) {
 			jTextArea.append(cadena + "\n");
 		}
+		jTextArea.append("\n" + this.pathActual + ">");
 	}
 
 	public void rellenaTabla(JTable tabla) {

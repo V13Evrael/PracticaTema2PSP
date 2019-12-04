@@ -97,6 +97,7 @@ public class FramePrincipal extends JFrame {
 		CompoundBorder borderTA = new CompoundBorder(line, emptyTA);
 
 		textArea = new JTextArea();
+		textArea.setEditable(false);
 		JScrollPane scrollPane_1 = new JScrollPane(textArea);
 		pnlIzq.add(scrollPane_1, BorderLayout.CENTER);
 
