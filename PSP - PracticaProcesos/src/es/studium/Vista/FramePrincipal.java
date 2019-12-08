@@ -58,6 +58,7 @@ public class FramePrincipal extends JFrame {
 	 * Create the frame.
 	 */
 	public FramePrincipal() {
+		setTitle("Consola");
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, (pantallaSize.width * 7) / 10, (pantallaSize.height * 6) / 10);
@@ -78,12 +79,12 @@ public class FramePrincipal extends JFrame {
 		textField = new JTextField();
 
 		textField.setCaretColor(new Color(204, 204, 204));
-		
+
 		Border line = BorderFactory.createLineBorder(new Color(204, 204, 204));
 		Border emptyTF = new EmptyBorder(0, 3, 0, 0);
 		CompoundBorder borderTF = new CompoundBorder(line, emptyTF);
 		textField.setBorder(borderTF);
-		
+
 		pnlIzqNorte.add(textField, BorderLayout.CENTER);
 		textField.setColumns(10);
 		textField.setBackground(new Color(12, 12, 12));
@@ -156,16 +157,18 @@ public class FramePrincipal extends JFrame {
 		table = new JTable();
 		table.setShowHorizontalLines(false);
 		table.setShowVerticalLines(false);
-		table.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		table.setBorder(new EmptyBorder(3, 3, 3, 3));
 		table.setBackground(Color.WHITE);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"Nombre del proceso", "PID del proceso"
-			}
-		));
+		table.setModel(
+				new DefaultTableModel(new Object[][] {}, new String[] { "Nombre del proceso", "PID del proceso" }) {
+
+					private static final long serialVersionUID = 1L;
+
+					public boolean isCellEditable(int row, int column) {
+						return false;
+					}
+				});
 		table.getColumnModel().getColumn(0).setPreferredWidth(131);
 		table.getColumnModel().getColumn(1).setPreferredWidth(105);
 		pnlDerF2C1.setLayout(new BorderLayout(0, 0));
@@ -181,18 +184,18 @@ public class FramePrincipal extends JFrame {
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		panel.add(lblNewLabel);
 		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBorder(new LineBorder(Color.BLACK, 1, true));
+		scrollPane.setBorder(new CompoundBorder(new EmptyBorder(3, 3, 3, 3), new LineBorder(new Color(0, 0, 0))));
 		pnlDerF2C1.add(scrollPane, BorderLayout.CENTER);
-		
+
 		JPanel pnlBotonesProcesos = new JPanel();
 		pnlDerF2C1.add(pnlBotonesProcesos, BorderLayout.SOUTH);
-		
+
 		btnReload = new JButton("Refrescar");
 		btnReload.setPreferredSize(new Dimension(100, 23));
 		btnReload.setMinimumSize(new Dimension(100, 23));
 		btnReload.setMaximumSize(new Dimension(100, 23));
 		pnlBotonesProcesos.add(btnReload);
-		
+
 		btnParaProceso = new JButton("Stop");
 		btnParaProceso.setPreferredSize(new Dimension(100, 23));
 		btnParaProceso.setMinimumSize(new Dimension(100, 23));
@@ -251,5 +254,4 @@ public class FramePrincipal extends JFrame {
 	public JButton getBtnJuego() {
 		return btnJuego;
 	}
-
 }
